@@ -1,0 +1,13 @@
+/staging
+/production
+
+/*.retry
+/build/*.retry
+
+/roles/*
+!/roles/.keep
+!/roles/local.*
+
+/*.box
+/.vagrant
+/*.log

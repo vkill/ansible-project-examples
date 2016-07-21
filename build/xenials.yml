@@ -1,0 +1,6 @@
+---
+- hosts: xenials
+  gather_facts: false
+  become: true
+  roles:
+    - local.xenials

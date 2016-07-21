@@ -1,0 +1,15 @@
+---
+# Install and configure Python2.7 on 16.04LTS hosts
+- name: do python2.7 install
+  raw: apt-get install -qq python2.7
+  tags: xenials
+
+- name: check if softlink exists
+  register: file
+  stat: path=/usr/bin/python get_md5=no
+  tags: xenials
+
+- name: create softlink for python 2.7
+  raw: ln -s /usr/bin/python2.7 /usr/bin/python
+  when: file.stat.islnk is not defined
+  tags: xenials

@@ -1,0 +1,2 @@
+[xenials]
+ubuntu_xenial64 ansible_host=192.168.99.11 ansible_port=22 ansible_user=ubuntu ansible_ssh_private_key_file=.vagrant/machines/ubuntu_xenial64/virtualbox/private_key
