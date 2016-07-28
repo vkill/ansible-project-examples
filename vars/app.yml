@@ -1,0 +1,8 @@
+# Basic
+app_env: "{{ ansible_app_env | default('staging') }}"
+app_name: "ansible-project-examples"
+app_user: "deploy"
+app_group: "apps"
+app_basedir: "/var/apps"
+app_path: "{{ app_name }}_{{ app_env }}"
+app_workdir: "{{ app_basedir }}/{{ app_path }}"

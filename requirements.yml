@@ -1,0 +1,5 @@
+- src: https://github.com/ansistrano/deploy
+  name: carlosbuenosvinos.ansistrano-deploy
+
+- src: https://github.com/ansistrano/rollback
+  name: carlosbuenosvinos.ansistrano-rollback

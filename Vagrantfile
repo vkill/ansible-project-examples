@@ -19,5 +19,7 @@ Vagrant.configure(2) do |config|
       vb.memory = "512"
     end
 
+    config.ssh.forward_agent = true
+
   end
 end

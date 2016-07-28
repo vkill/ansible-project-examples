@@ -1,0 +1,10 @@
+---
+- name: Deploy app
+  hosts: all
+  vars_files:
+    - vars/app.yml
+    - vars/deploy.yml
+  roles:
+    - role: carlosbuenosvinos.ansistrano-deploy
+      become: true
+      become_user: "{{ app_user }}"

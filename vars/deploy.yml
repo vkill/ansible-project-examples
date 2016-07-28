@@ -1,0 +1,10 @@
+# For carlosbuenosvinos.ansistrano-deploy and carlosbuenosvinos.ansistrano-rollback
+ansistrano_current_dir: current
+
+ansistrano_deploy_via: git
+ansistrano_git_repo: https://github.com/vkill/ansible-project-examples.git
+ansistrano_git_branch: master
+
+ansistrano_deploy_to: "{{ app_workdir }}"
+
+ansistrano_allow_anonymous_stats: false

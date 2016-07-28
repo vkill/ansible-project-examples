@@ -1,0 +1,14 @@
+---
+- hosts: app
+  become: true
+  vars_files:
+    - ../vars/app.yml
+
+  tasks:
+    - name: Mkdir app workdir
+      file:
+        path: "{{ app_workdir }}/shared/log"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: 0750

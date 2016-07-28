@@ -1,2 +1,4 @@
 ---
 - include: build/xenials.yml
+- include: build/app_base.yml
+- include: build/app_workdir.yml

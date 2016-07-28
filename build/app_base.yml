@@ -1,0 +1,50 @@
+---
+- hosts: app
+  become: true
+  vars_files:
+    - ../vars/app.yml
+
+  tasks:
+    - name: Create app group
+      group:
+        name: "{{ app_group }}"
+        state: present
+
+    - name: Create app user
+      user:
+        name: "{{ app_user }}"
+        group: "{{ app_group }}"
+
+    - name: Creates app user ~/.ssh directory
+      file:
+        path: "/home/{{ app_user }}/.ssh"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: 0700
+
+    - name: Creates app user ~/.ssh/authorized_keys file
+      file:
+        path: "/home/{{ app_user }}/.ssh/authorized_keys"
+        state: touch
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: 0600
+
+    - name: Put your key to app user ~/.ssh/authorized_keys file
+      authorized_key:
+        user: "{{ app_user }}"
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+    - name: Add app user to /etc/sudoers
+      lineinfile:
+        dest: /etc/sudoers
+        line: "{{ app_user }} ALL=(ALL) NOPASSWD:ALL"
+
+    - name: Mkdir apps based directory
+      file:
+        path: "{{ app_basedir }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_group }}"
+        mode: 0750
