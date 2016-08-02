@@ -14,6 +14,7 @@
       user:
         name: "{{ app_user }}"
         group: "{{ app_group }}"
+        shell: /bin/bash
 
     - name: Creates app user ~/.ssh directory
       file:
